@@ -14,19 +14,24 @@ int main(int argc, char *argv[]){
     string fragm2;
     string X;
     string Y;
+    string Z;
     float maxX = 0;
     float maxY =0;
-    int nCounterG1ne = 0;
-    int nCounterG1e = 0;
-    int nCounterZ = 0;
+    float maxZ = 0;
+    int nCounterG1ne = 0;   //Number of non-extrusion movements
+    int nCounterG1e = 0;    //Number of extrusion movements
+    int nCounterZ = 0;      //Number of layers in the 3D model
     int pos1 = 0;
     int pos2 = 0;
     int posX = 0;
     int posY = 0;
+    int posZ = 0;
     float integerX = 0;
     float integerY = 0;
+    float integerZ = 0;
 
-    inputFile.open(argv[1],ios::in);
+    inputFile.open("",ios::in);
+    //inputFile.open(argv[1],ios::in);
     if (inputFile.is_open()) {
         while (! inputFile.eof() ) {
             getline (inputFile,line);
@@ -35,6 +40,18 @@ int main(int argc, char *argv[]){
 
             if (fragm2 == "G1 Z"){
                 nCounterZ++;
+                posZ = line.find("Z",2);
+                if(posZ != -1){
+                    Z = line.substr(posZ+1,posZ+3);
+                    integerZ = atof(Z.c_str());
+                    if (integerZ > maxZ){
+                        maxZ = integerZ;
+                    }
+                    else{
+                        maxZ = maxZ;
+                    }
+                }
+
                 pos1 = line.find("E",2);
                 if (pos1 != -1){
                     nCounterG1e++;
@@ -81,6 +98,7 @@ int main(int argc, char *argv[]){
         cout << "Number of layers in the 3D model:" << nCounterZ << "\n" << endl;
         cout << "Max X:" << maxX << "\n" << endl;
         cout << "Max Y:" << maxY << "\n" << endl;
+        cout << "Max Z:" << maxZ << "\n" << endl;
     }
     else {
         cout << "Error" << endl;
