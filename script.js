@@ -1,24 +1,26 @@
 $(function(){
-	$('#send').click(UploadGcodeFiles);
+	$('#send').click(UploadGcodeFiles); //Click in botton send --> execute function UploadGcodeFiles
 });
 
 function UploadGcodeFiles(){	
-		var archivos = document.getElementById("archivos");
-		var archivo = archivos.files;
+		var archivos = document.getElementById("archivos");	//Create object with the element "archivos" (input file with id = archivos)
+		var archivo = archivos.files;						//Get files from the input file
 		var archivos = new FormData();
 		for(i=0; i<archivo.length; i++){
 			archivos.append('archivo'+i,archivo[i]);
 		}
 		
+		//Ajax function
+
 		$.ajax({
-			url:'upload.php',
-			type:'POST',
+			url:'upload.php',	//Url
+			type:'POST',		//Method
 			contentType:false,
-			data:archivos,
+			data:archivos,		//Object "archivos"
 			processData:false,
 			cache:false
-		}).done(function(msg){
-			MensajeFinal(msg)
+		}).done(function(msg){	
+			MensajeFinal(msg)	//Final message
 		});
 }
 
