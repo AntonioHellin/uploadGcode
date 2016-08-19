@@ -1,5 +1,5 @@
 <?php
-$ruta = './Files/';			//Save location
+$ruta = '/tmp/';			//Save location
 $message = '';				
 foreach ($_FILES as $key)	//Bucle
 {	
@@ -13,12 +13,10 @@ foreach ($_FILES as $key)	//Bucle
 		
 		//Execute tools (C++) --> filetest.exe
 		//Pass by reference the uploaded file --> $file_upload 
-		//
 		//argv[0] --> filetest.exe
 		//argv[1] --> $file_upload
-		//
 
-		system("filetest.exe $file_upload");					
+		system("/var/www/html/filetest $file_upload");					
 
 	}
 
