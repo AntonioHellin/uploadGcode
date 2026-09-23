@@ -1,45 +1,70 @@
 <!doctype html>
-<html lang="es">
-<head> <meta charset="UTF-8">
-	<title>GCode Analyzer</title>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	<!-- jQuery-->
-	<script src="script.js"></script>
-	
-	<!-- Style -->
-
-	<style type="text/css">
-		body{
-			font-size: 16px;
-			text-align: center;
-			width: 500px;
-			margin: 0 auto;
-		}
-		.message{
-			border:dashed 1px red;
-			background-color:#FFC6C7;
-			color: #000000;
-			padding: 10px;
-			text-align: left;
-			margin: 10px auto; 
-			display: none;
-		}
-	</style>
-	</head>
-	<body>
-		<h1>Upload GCode Files</h1>
-
-		<!-- Input File Form -->
-
-			<div class="message"> Files done </div>      
-            <table align="center">
-                <tr>
-                    <td>GCode</td>
-                    <td><input type="file"  multiple="multiple" id="archivos"></td>	<!-- Input File field -->
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><button id="send">Start analysis</button></td>
-                </tr>    
-            </table>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCode Analyzer</title>
+    <!-- Transport Encryption: HTTPS CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto;
+            color: #333333;
+        }
+        h1 {
+            color: #1a1a1a;
+        }
+        .upload-container {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 24px;
+            background: #fafafa;
+        }
+        .message {
+            border: 1px solid #4caf50;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 12px;
+            text-align: left;
+            margin: 16px auto;
+            border-radius: 4px;
+            display: none;
+            overflow-x: auto;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Upload GCode Files</h1>
+        <div class="message"></div>      
+        <table align="center">
+            <tr>
+                <td><label for="archivos"><strong>G-Code File:</strong></label></td>
+                <td><input type="file" multiple="multiple" id="archivos" accept=".gcode,.txt"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; padding-top: 15px;">
+                    <button id="send">Start Analysis</button>
+                </td>
+            </tr>    
+        </table>
+    </div>
+</body>
 </html>

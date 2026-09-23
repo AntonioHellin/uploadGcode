@@ -1,0 +1,47 @@
+# Compiled Object files
+*.slo
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+filetest
+
+# Uploaded runtime files
+Files/*
+!Files/test.gcode
+!Files/test1.txt
+!Files/test2.txt
+
+# PHP and server logs
+error_log
+access_log
+*.log
+
+# Environment files
+.env
+.env.local
+
+# IDE and Editor configurations
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db

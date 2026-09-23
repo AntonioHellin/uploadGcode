@@ -1,30 +1,40 @@
-$(function(){
-	$('#send').click(UploadGcodeFiles); //Click in botton send --> execute function UploadGcodeFiles
+/**
+ * Client-side file upload and asynchronous analysis trigger.
+ */
+
+$(function () {
+    $('#send').click(uploadGcodeFiles);
 });
 
-function UploadGcodeFiles(){	
-		var archivos = document.getElementById("archivos");	//Create object with the element "archivos" (input file with id = archivos)
-		var archivo = archivos.files;						//Get files from the input file
-		var archivos = new FormData();
-		for(i=0; i<archivo.length; i++){
-			archivos.append('archivo'+i,archivo[i]);
-		}
-		
-		//Ajax function
+function uploadGcodeFiles() {
+    var fileInputElement = document.getElementById("archivos");
+    var files = fileInputElement.files;
 
-		$.ajax({
-			url:'upload.php',	//Url
-			type:'POST',		//Method
-			contentType:false,
-			data:archivos,		//Object "archivos"
-			processData:false,
-			cache:false
-		}).done(function(msg){	
-			MensajeFinal(msg)	//Final message
-		});
+    if (!files || files.length === 0) {
+        displayMessage("Please select at least one G-code file to upload.");
+        return;
+    }
+
+    var formData = new FormData();
+    for (var i = 0; i < files.length; i++) {
+        formData.append('file_' + i, files[i]);
+    }
+
+    $.ajax({
+        url: 'upload.php',
+        type: 'POST',
+        contentType: false,
+        data: formData,
+        processData: false,
+        cache: false
+    }).done(function (response) {
+        displayMessage(response);
+    }).fail(function (xhr, status, error) {
+        displayMessage("Error uploading file: " + error);
+    });
 }
 
-function MensajeFinal(msg){
-	$('.message').html(msg);
-	$('.message').show('slow');
+function displayMessage(messageContent) {
+    $('.message').html(messageContent);
+    $('.message').show('slow');
 }
