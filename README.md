@@ -81,7 +81,3 @@ Max X: 120.45
 Max Y: 115.30
 Max Z: 18.20
 ```
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
