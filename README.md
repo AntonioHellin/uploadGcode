@@ -23,7 +23,7 @@ A lightweight web interface and C++ backend service for parsing, analyzing, and 
 
 1. Clone the repository into your web root (or local directory):
    ```bash
-   git clone https://github.com/AntonioHellin/uploadGcode.git gcode-upload-analyzer
+   git clone https://github.com/AntonioHellin/gcode-upload-analyzer.git
    cd gcode-upload-analyzer
    ```
 
